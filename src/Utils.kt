@@ -15,7 +15,7 @@ fun String.md5(): String = BigInteger(1, MessageDigest.getInstance("MD5").digest
 val digits = Regex("""\d+""")
 
 /**
- * Converts a list of strings to a list of lists of integers
+ * Converts a list of strings to a list of lists of integers.
  */
 fun List<String>.toListOfInts(): List<List<Int>> {
     return map { s ->
