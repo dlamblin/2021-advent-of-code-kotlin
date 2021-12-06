@@ -1,6 +1,4 @@
-import java.util.*
 import kotlin.collections.ArrayList
-import kotlin.concurrent.fixedRateTimer
 
 data class Board(val which: Int = 0) {
     val marked = Array(5) { Array(5) { false } }
