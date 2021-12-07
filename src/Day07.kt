@@ -30,7 +30,7 @@ fun main() {
     println("\t#\tTesting")
     val testInput = readInput(day + "_test").toListOfInts().first()
     println("\t##\tPart 1")
-    var testResult1 = 0
+    var testResult1: Int
     var timeInNanos = measureNanoTime {
         testResult1 = part1(testInput)
     }
@@ -48,7 +48,17 @@ fun main() {
     val input = readInput(day).toListOfInts().first()
     println("\t#\tRunning")
     println("\t##\tPart 1")
-    println("Result:\t\t${part1(input)}")
+    timeInNanos = measureNanoTime {
+        println("Result:\t\t${part1(input)}")
+    }
+    println("\t\tin $timeInNanos ns")
+    timeInNanos = measureNanoTime {
+        println("Result:\t\t${part1Alt(input)}")
+    }
+    println("\t\tin $timeInNanos ns")
     println("\t##\tPart 2")
-    println("Result:\t\t${part2(input)}")
+    timeInNanos = measureNanoTime {
+        println("Result:\t\t${part2(input)}")
+    }
+    println("\t\t in $timeInNanos ns")
 }

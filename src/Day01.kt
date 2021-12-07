@@ -2,32 +2,36 @@ fun main() {
     /**
      * Count when lines increase.
      */
-    fun increasedInts(inputInts: List<Int>): Int {
-        var increased = 0
-        for (pair in inputInts.windowed(2, 1)) {
-            increased += if (pair.first() < pair.last()) 1 else 0
-        }
-        return increased
-    }
+    fun List<Int>.countIncInts(): Int = windowed(2, 1)
+        .count { it[0] < it[1] }
 
-    fun part1(input: List<String>): Int {
-        val inputInts = input.map { it.toInt() }
-        return increasedInts(inputInts)
-    }
+    fun List<String>.toInts(): List<Int> = map { it.toInt() }
+
+    fun part1(input: List<String>): Int = input.toInts()
+        .countIncInts()
+
+    fun part2Orig(input: List<String>): Int = input.toInts()
+        .windowed(3, 1)
+        .map { it.sum() }
+        .countIncInts()
 
     fun part2(input: List<String>): Int {
-        val threeSums = input.map { it.toInt() }.windowed(3, 1).map { it.sum() }
-        return increasedInts(threeSums)
+        val ints = input.toInts()
+        return ints.withIndex().drop(3).count { (i, v) -> ints[i - 3] < v }
     }
 
     // test if implementation meets criteria from the description, like:
     println("\t#\tTesting")
     val testInput = readInput("Day01_test")
     println("\t#\tPart 1")
-    println(part1(testInput))
-    check(part1(testInput) == 7)
+    val part1result = part1(testInput)
+    println(part1result)
+    check(part1result == 7)
     println("\t#\tPart 2")
-    println(part2(testInput))
+    val part2result = part2(testInput)
+    println(part2result)
+    check(part2result == 5)
+
 
     println("\t#\tRunning")
     val input = readInput("Day01")
