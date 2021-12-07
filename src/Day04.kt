@@ -112,7 +112,6 @@ fun main() {
         }
         println("Last winning pick was $winningPick")
         return winningPick * winningBoard.sumOfUnmarked()
-        return input.size
     }
 
     // test if implementation meets criteria from the description, like:
