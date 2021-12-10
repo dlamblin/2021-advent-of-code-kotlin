@@ -125,12 +125,14 @@ fun main() {
     fun part2(input: List<String>): Int {
         val largest = mutableListOf(0, 0, 0)
         val depths = parseDepths(input)
+        var basins = 0
         // find each possible basin start
         for (x in depths.indices) {
             for (y in depths[x].indices) {
                 if (depths[x][y] < '9') {
                     // Start a fill here, keep track of 3 largest sizes
                     largest.add(flow(depths, x, y)) // now 4 long
+                    println("Basin ${++basins} size: ${largest.last()}")
                     val min = largest.minOf { it }
                     // remove the minimum value making it 3 long again
                     largest.removeAt(largest.withIndex().first { it.value == min }.index)
@@ -145,6 +147,7 @@ fun main() {
                 }
             }
         }
+        println("Top 3 basin sizes were: $largest")
         return largest[0] * largest[1] * largest[2]
     }
 
