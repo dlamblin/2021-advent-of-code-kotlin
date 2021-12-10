@@ -49,23 +49,23 @@ fun main() {
             }
             // flow up
             while (--y >= 0) {
-                for (x in depths.indices) {
-                    if (depths[x][y+1] == '=' && depths[x][y] < '9') {
-                        depths[x][y] = '='
+                for (ux in depths.indices) {
+                    if (depths[ux][y+1] == '=' && depths[ux][y] < '9') {
+                        depths[ux][y] = '='
                         changed++
                     }
                 }
                 // flow upper line right
-                for (x in depths.indices.drop(1)) {
-                    if (depths[x-1][y] == '=' && depths[x][y] < '9') {
-                        depths[x][y] = '='
+                for (urx in depths.indices.drop(1)) {
+                    if (depths[urx-1][y] == '=' && depths[urx][y] < '9') {
+                        depths[urx][y] = '='
                         changed++
                     }
                 }
                 // flow upper line left
-                for (x in depths.indices.reversed().drop(1)) {
-                    if (depths[x+1][y] == '=' && depths[x][y] < '9') {
-                        depths[x][y] = '='
+                for (ulx in depths.indices.reversed().drop(1)) {
+                    if (depths[ulx+1][y] == '=' && depths[ulx][y] < '9') {
+                        depths[ulx][y] = '='
                         changed++
                     }
                 }
@@ -73,23 +73,23 @@ fun main() {
             // flow down
             y = 0
             while (++y < depths[0].size) {
-                for (x in depths.indices) {
-                    if (depths[x][y-1] == '=' && depths[x][y] < '9') {
-                        depths[x][y] = '='
+                for (dx in depths.indices) {
+                    if (depths[dx][y-1] == '=' && depths[dx][y] < '9') {
+                        depths[dx][y] = '='
                         changed++
                     }
                 }
-                // flow upper line right
-                for (x in depths.indices.drop(1)) {
-                    if (depths[x-1][y] == '=' && depths[x][y] < '9') {
-                        depths[x][y] = '='
+                // flow lower line right
+                for (drx in depths.indices.drop(1)) {
+                    if (depths[drx-1][y] == '=' && depths[drx][y] < '9') {
+                        depths[drx][y] = '='
                         changed++
                     }
                 }
-                // flow upper line left
-                for (x in depths.indices.reversed().drop(1)) {
-                    if (depths[x+1][y] == '=' && depths[x][y] < '9') {
-                        depths[x][y] = '='
+                // flow lower line left
+                for (dlx in depths.indices.reversed().drop(1)) {
+                    if (depths[dlx+1][y] == '=' && depths[dlx][y] < '9') {
+                        depths[dlx][y] = '='
                         changed++
                     }
                 }
