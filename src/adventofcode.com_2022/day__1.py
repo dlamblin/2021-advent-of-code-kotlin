@@ -54,10 +54,10 @@ EXAMPLE = """1000
 """
 
 if __name__ == "__main__":
-    print(f"Example: {run(EXAMPLE.splitlines())}")
-    print(f"Example 2nd: {run(EXAMPLE.splitlines(), 3)}")
+    print(f"Example: \t{run(EXAMPLE.splitlines())}")
+    print(f"Example 2nd: \t{run(EXAMPLE.splitlines(), 3)}")
     with open(__file__.replace('py', 'in.txt'), "r", encoding="utf-8") as f:
         input_list = list(f)
-        print(f"Input: {run(input_list)}")
-        print(f"Input 2nd: {run(input_list, 3)}")
+        print(f"Input:  \t{run(input_list)}")
+        print(f"Input 2nd: \t{run(input_list, 3)}")
  
