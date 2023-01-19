@@ -59,5 +59,5 @@ if __name__ == "__main__":
     with open(__file__.replace('py', 'in.txt'), "r", encoding="utf-8") as f:
         input_list = list(f)
         print(f"Input: {run(input_list)}")
-        print(f"Input: {run(input_list, 3)}")
+        print(f"Input 2nd: {run(input_list, 3)}")
  
