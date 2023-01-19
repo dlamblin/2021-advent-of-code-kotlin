@@ -4,11 +4,33 @@ Lets see if 60h free every month is enough.
 
 """
 
+def cleanup_line(line: str) -> str:
+    """
+    chomp trailing newlines
+    """
+    return line.rstrip('\n')
+
+
+
 def run(lines: list[str]) -> int:
     """
     Day 1: Calorie Counting
     """
-    return len(lines)
+    groups = [[]]
+    for cal in lines:
+        cal = cleanup_line(cal)
+        if cal == '':
+            groups.append([])
+        else:
+            groups[-1].append(int(cal))
+
+    # for i, g in enumerate(groups):
+    #     print(f"{i} has {len(g)} = {sum(g)}: {g}")
+
+    # for i, g in enumerate(map(sum, groups)):
+    #     print(f"{i} = {g}")
+
+    return max(map(sum, groups))
 
 EXAMPLE = """1000
 2000
