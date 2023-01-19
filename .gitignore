@@ -3,3 +3,4 @@
 build
 src/**/*.txt
 !src/**/*_test.txt
+!src/**/*.in.txt
