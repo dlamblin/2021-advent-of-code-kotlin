@@ -19,9 +19,11 @@ def pack_lr(pack: str) -> tuple[str, str]:
 
 
 def common_char(pockets: tuple[str, str]) -> str:
-    left = set(pockets[0])
-    right = set(pockets[1])
-    return left.intersection(right).pop()
+    """
+    Gives the last common item between the strings
+    Assume you only get one character in common.
+    """
+    return set(pockets[0]).intersection(*pockets[1:]).pop()
 
 
 def priority(item: str) -> int:
@@ -33,11 +35,14 @@ def priority(item: str) -> int:
 def run(lines: list[str], second: int = 0) -> int:
     """
     Day 3: Rucksack Reorganization
-    Part 2: ?
+    Part 2: badges in groups of 3
     """
+    cleaned = [cleanup_line(l) for l in lines]
     pri_for_common_items = [
-        priority(common_char(pack_lr(cleanup_line(l))))
-        for l in lines]
+        priority(common_char(pack_lr(l)))  # the priorities of the left-right
+        for l in cleaned] if second == 0 else [
+        priority(common_char(tripple))  # the priorities of the common btw 3
+        for tripple in zip(*[iter(cleaned)]*3)]  # groups by 3
 
     return sum(pri_for_common_items)
 
