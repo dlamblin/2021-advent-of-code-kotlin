@@ -27,8 +27,7 @@ def common_char(pockets: tuple[str, str]) -> str:
 def priority(item: str) -> int:
     if item.islower():
         return ord(item) - 96
-    else:
-        return ord(item) - 64
+    return ord(item) - 38
 
 
 def run(lines: list[str], second: int = 0) -> int:
@@ -36,7 +35,9 @@ def run(lines: list[str], second: int = 0) -> int:
     Day 3: Rucksack Reorganization
     Part 2: ?
     """
-    pri_for_common_items = [priority(common_char(pack_lr(chomp(l)))) for l in list]
+    pri_for_common_items = [
+        priority(common_char(pack_lr(cleanup_line(l))))
+        for l in lines]
 
     return sum(pri_for_common_items)
 
